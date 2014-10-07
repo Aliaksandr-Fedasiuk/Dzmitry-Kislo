@@ -30,11 +30,11 @@ public class Main {
         ClassLoader loader = new JarClassLoader();
 
         while (swValue != 3) {
-            swValue = Keyin.inInt(" Select option: ");
+            swValue = Keyin.inInt(" Select option: "); //Scanner scanner = new Scanner(System.in);
 
 
             switch (swValue) {
-                case 1:
+                case 1: //copy paste style
                     Class clazz = Class.forName("com.epam.sample.JarSampleImpl", true, loader);
                     JarSample object = (JarSample) clazz.newInstance();
                     LOG.info(object);
@@ -51,7 +51,7 @@ public class Main {
 
                     LOG.info("New functionality was loaded by" + object.getClass().getClassLoader());
                     break;
-                case 2:
+                case 2: //copy paste style
                     ClassLoader loader1 = new JarClassLoader();
                     Class clazz1 = Class.forName("com.epam.sample.JarSampleImpl", true, loader1);
                     JarSample object1 = (JarSample) clazz1.newInstance();
