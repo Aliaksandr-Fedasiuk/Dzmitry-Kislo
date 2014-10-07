@@ -12,13 +12,15 @@ public class JarSampleImpl implements JarSample {
     public JarSampleImpl() {
     }
 
-    @Override
+    @Override //should be deleted: this is implementation
     public int increment() {
         return i++;
     }
 
     @Override
     public String toString() {
+        // "+" operation should be changed to StringBuffer.append
+        // Strings should be extracted as constants
         return "Static fields --> STATIC_COUNTER_INTERFACE {"+counter.append("1")+"}:::STATIC_COUNTER_IMPL{"+counter1.append(2) + "}";
     }
 }
