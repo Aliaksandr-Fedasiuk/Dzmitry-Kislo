@@ -1,0 +1,6 @@
+Java.MP.C4.M3.GC Default Task 1:
+java -Xms6m -Xmx18m -Xmn2m -XX:PermSize=20m -XX:MaxPermSize=30m -XX:+UseSerialGC -jar gc.jar
+
+Java.MP.C4.M3.GC Default Task 3:
+java -Xms9m -Xmx18m -Xmn3m -XX:PermSize=40m -XX:MaxPermSize=40m -XX:+UseParallelOldGC -jar gc.jar
+

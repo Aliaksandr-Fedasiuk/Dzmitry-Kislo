@@ -1,0 +1,7 @@
+1) After cloning, go to gc project and run mvn clean package.
+2) Will be created /out directory (in project dir) with out/gc.jar.
+3) cd /out and run:
+    a) java -Xms6m -Xmx18m -Xmn2m -XX:PermSize=20m -XX:MaxPermSize=30m -XX:+UseSerialGC -jar gc.jar
+    b) java -Xms9m -Xmx18m -Xmn3m -XX:PermSize=40m -XX:MaxPermSize=40m -XX:+UseParallelOldGC -jar gc.jar
+
+4) Run Java VisualVM for monitoring GC.
