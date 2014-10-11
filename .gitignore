@@ -16,3 +16,13 @@ out/
 # Maven
 log/
 target/
+
+
+
+*/out/
+*/.idea/
+*/*.iml
+*/*.iws
+*/*.class
+*/log/
+*/target/
