@@ -1,0 +1,4 @@
+1) After cloning, go to the project and run mvn clean package.
+2) Will be created /out directory (in the project dir) with out/memory.jar.
+3) cd /out and run:
+java -Xss1m -Xms384m -Xmx384m -XX:NewSize=128m -XX:MaxNewSize=128m -XX:NewRatio=2 -XX:SurvivorRatio=1 -jar memory.jar
