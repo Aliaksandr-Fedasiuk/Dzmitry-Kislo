@@ -1,4 +1,6 @@
 package com.cdp.multi;
+import org.apache.log4j.Logger;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -6,22 +8,27 @@ import java.util.List;
  * Created by dima on 27.10.14.
  */
 public class ElementBuffer {
+    static final Logger logger = Logger.getLogger(ElementBuffer.class);
     private File file = new File("test.txt");
     private static final int MAX_FILE_SIZE = 1000;
     private static final int MIN_FILE_SIZE = 10;
 
     public synchronized void put(String newElem) throws InterruptedException {
+        logger.info("Buffer : * - put()");
         while (file.length() > MAX_FILE_SIZE) {
             this.wait();
         }
+        logger.info("Buffer : writeToFile()");
         writeToFile(newElem);
         this.notifyAll();
     }
 
     public synchronized List<String> get() throws InterruptedException {
+        logger.info("Buffer : * - get()");
         while (file.length() < MIN_FILE_SIZE) {
             this.wait();
         }
+        logger.info("Buffer : readFromFile()");
         List<String> result = null;
         try {
             result = readFromFile();

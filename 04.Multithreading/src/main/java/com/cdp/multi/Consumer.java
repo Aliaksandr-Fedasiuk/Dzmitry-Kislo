@@ -23,8 +23,8 @@ public class Consumer implements Runnable {
     public void run() {
         while (true) {
             try {
-                List<String> elements = elementBuffer.get();
                 logger.info("Consumer" + id + ": read from file.");
+                List<String> elements = elementBuffer.get();
                 for (String s : elements) {
                     logger.info("\t" + s);
                 }
