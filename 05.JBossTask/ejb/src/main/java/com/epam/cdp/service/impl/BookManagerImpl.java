@@ -6,6 +6,7 @@ import com.epam.cdp.service.BookManager;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -26,6 +27,7 @@ public class BookManagerImpl implements BookManager {
     @Override
     public void create(Book book) {
         book.setId(UUID.randomUUID().toString().toUpperCase());
+        book.setPublished(new Date());
         entityManager.persist(book);
     }
 }

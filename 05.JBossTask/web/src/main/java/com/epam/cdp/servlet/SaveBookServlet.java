@@ -10,21 +10,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 /**
- * Created by dima on 30.11.14.
+ * Created by dima on 1.12.14.
  */
-@WebServlet(urlPatterns = {"/books", "/books.do"})
-public class BookServlet extends HttpServlet {
-
+@WebServlet(urlPatterns = {"/save", "/save.do"})
+public class SaveBookServlet extends HttpServlet {
     @EJB
     BookManager bookManager;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Book> bookList = bookManager.findAll();
-        request.setAttribute("books", bookList);
-        request.getRequestDispatcher("WEB-INF/jsp/list.jsp").forward(request, response);
+        String title = request.getParameter("title");
+        Book book = new Book();
+        book.setTitle(title);
+        bookManager.create(book);
+        request.getRequestDispatcher("/books.do").forward(request, response);
     }
 }
