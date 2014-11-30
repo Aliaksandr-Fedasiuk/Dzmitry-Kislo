@@ -46,7 +46,7 @@
                             <groupId>com.epam.cdp</groupId>
                             <artifactId>web</artifactId>
                             <bundleFileName>${project.build.finalName}</bundleFileName>
-                            <contextRoot>/bank</contextRoot>
+                            <contextRoot>/library</contextRoot>
                         </webModule>
                         <ejbModule>
                             <groupId>com.epam.cdp</groupId>

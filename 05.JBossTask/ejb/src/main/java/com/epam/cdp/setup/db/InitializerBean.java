@@ -27,7 +27,7 @@ import java.sql.SQLException;
 @TransactionManagement(TransactionManagementType.BEAN)
 public class InitializerBean {
     private static final String STAGE = "development";
-    private static final String CHANGELOG_FILE = "liquibase.xml";
+    private static final String CHANGELOG_FILE = "liquibase/db.changelog.xml";
 
     @Resource
     private DataSource dataSource;
