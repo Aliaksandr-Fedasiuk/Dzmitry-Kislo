@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- Project properties -->
+    <properties>
+        <app.version>1.0-SNAPSHOT</app.version>
+    </properties>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.epam.cdp</groupId>
+    <artifactId>jboss-project</artifactId>
+    <packaging>pom</packaging>
+    <version>${app.version}</version>
+
+    <modules>
+        <module>ejb</module>
+        <module>ear</module>
+        <module>web</module>
+    </modules>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.7</source>
+                        <target>1.7</target>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
+
+                <!-- The WildFly plugin deploys your ear to a local JBoss AS container -->
+                <!-- Due to Maven's lack of intelligence with EARs we need to configure the -->
+                <!-- wildfly maven plugin to skip deployment for all modules. We then enable it -->
+                <!-- specifically in the ear module. -->
+                <plugin>
+                    <groupId>org.wildfly.plugins</groupId>
+                    <artifactId>wildfly-maven-plugin</artifactId>
+                    <version>1.0.2.Final</version>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+    </build>
+
+
+</project>
