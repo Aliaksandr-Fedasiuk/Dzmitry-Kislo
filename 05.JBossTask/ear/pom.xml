@@ -34,7 +34,6 @@
     </dependencies>
 
     <build>
-        <!--<finalName>build-ear</finalName>-->
         <plugins>
 
             <plugin>
@@ -45,16 +44,8 @@
                         <webModule>
                             <groupId>com.epam.cdp</groupId>
                             <artifactId>web</artifactId>
-                            <!--<bundleFileName>${project.build.finalName}</bundleFileName>-->
-                            <!--<bundleFileName>web-1.0-SNAPSHOT.war</bundleFileName>-->
                             <contextRoot>/library</contextRoot>
                         </webModule>
-                        <!--<ejbModule>-->
-                            <!--<groupId>com.epam.cdp</groupId>-->
-                            <!--<artifactId>ejb</artifactId>-->
-                            <!--&lt;!&ndash;<bundleFileName>${project.build.finalName}.jar</bundleFileName>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<bundleFileName>ejb-1.0-SNAPSHOT.jar</bundleFileName>&ndash;&gt;-->
-                        <!--</ejbModule>-->
                     </modules>
                     <!-- If I want maven to generate the application.xml, set this to true -->
                     <!--<generateApplicationXml>true</generateApplicationXml>-->
