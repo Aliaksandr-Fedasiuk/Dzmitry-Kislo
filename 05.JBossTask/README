@@ -1,4 +1,4 @@
-After cloning the project, go to the project root dir and run "mvn" command.
-
+1) After cloning the project, go to the project root dir and run "mvn" command.
+2) Enter the URL in browser--> localhost:8080/library/input
 The application will be deployed on WildFly AS. WildFly is a flexible, lightweight, managed application runtime that helps you build amazing applications.
 WildFly,formerly known as JBoss AS, or simply JBoss, is an application server authored by JBoss, now developed by Red Hat.
