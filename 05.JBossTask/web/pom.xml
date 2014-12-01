@@ -22,8 +22,7 @@
         <dependency>
             <groupId>com.epam.cdp</groupId>
             <artifactId>ejb</artifactId>
-            <version>${app.version}</version>
-            <type>ejb</type>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax</groupId>

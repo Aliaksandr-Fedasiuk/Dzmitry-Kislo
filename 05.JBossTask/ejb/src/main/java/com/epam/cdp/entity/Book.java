@@ -1,20 +1,17 @@
 package com.epam.cdp.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 /**
  * Created by dima on 30.11.14.
  */
 @Entity
+@Table(name = "book")
 @NamedQueries(@NamedQuery(name = Book.Query.FIND_ALL, query = "SELECT b FROM Book b ORDER BY b.title"))
-public class Book {
+public class Book implements Serializable {
     public static class Query {
         public static final String FIND_ALL = "Book.findAll";
     }

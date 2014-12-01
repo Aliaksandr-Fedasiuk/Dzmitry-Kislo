@@ -48,12 +48,4 @@
             <column name="role" value="MANAGER"/>
         </insert>
     </changeSet>
-    <changeSet author="dzmitry_kislo" id="2014-12-01_2"
-               context="development">
-        <insert tableName="accounts">
-            <column name="login" value="user"/>
-            <column name="password" value="user"/>
-            <column name="role" value="USER"/>
-        </insert>
-    </changeSet>
 </databaseChangeLog>
