@@ -25,6 +25,6 @@ public class BookServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Book> bookList = bookManager.findAll();
         request.setAttribute("books", bookList);
-        request.getRequestDispatcher("WEB-INF/jsp/list.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/jsp_public/list.jsp").forward(request, response);
     }
 }

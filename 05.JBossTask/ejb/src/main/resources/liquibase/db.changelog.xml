@@ -7,10 +7,19 @@
                context="development">
         <createTable tableName="book">
             <column name="id" type="CHAR(36)">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
-            <column name="title" type="VARCHAR(255)" />
-            <column name="published" type="DATETIME" />
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="published" type="DATETIME"/>
+        </createTable>
+
+        <createTable tableName="accounts">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="login" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="role" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
     <changeSet author="dzmitry_kislo" id="2014-11-30_1450-add-a-book"
@@ -27,6 +36,24 @@
             <column name="id" value="6FE7A1E5-B172-4D7C-97C7-88667862B264"/>
             <column name="title" value="Another book"/>
             <column name="published" value="2014-11-29 00:20:00"/>
+        </insert>
+    </changeSet>
+
+
+    <changeSet author="dzmitry_kislo" id="2014-12-01_1"
+               context="development">
+        <insert tableName="accounts">
+            <column name="login" value="manager"/>
+            <column name="password" value="manager"/>
+            <column name="role" value="MANAGER"/>
+        </insert>
+    </changeSet>
+    <changeSet author="dzmitry_kislo" id="2014-12-01_2"
+               context="development">
+        <insert tableName="accounts">
+            <column name="login" value="user"/>
+            <column name="password" value="user"/>
+            <column name="role" value="USER"/>
         </insert>
     </changeSet>
 </databaseChangeLog>
