@@ -15,6 +15,7 @@ import liquibase.Liquibase;
 import liquibase.database.Database;
 import liquibase.database.DatabaseFactory;
 import liquibase.database.jvm.JdbcConnection;
+import liquibase.exception.DatabaseException;
 import liquibase.exception.LiquibaseException;
 import liquibase.resource.ClassLoaderResourceAccessor;
 import liquibase.resource.ResourceAccessor;
@@ -35,13 +36,19 @@ public class InitializerBean {
     @PostConstruct
     protected void bootstrap() {
         ResourceAccessor resourceAccessor = new ClassLoaderResourceAccessor(getClass().getClassLoader());
-        try (Connection connection = ds.getConnection()) {
+        try  {
+            Connection connection = ds.getConnection();
             JdbcConnection jdbcConnection = new JdbcConnection(connection);
             Database db = DatabaseFactory.getInstance().findCorrectDatabaseImplementation(jdbcConnection);
 
             Liquibase liquiBase = new Liquibase(CHANGELOG_FILE, resourceAccessor, db);
             liquiBase.update(STAGE);
-        } catch (SQLException | LiquibaseException e) {
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (DatabaseException e) {
+            e.printStackTrace();
+        } catch (LiquibaseException e) {
+            e.printStackTrace();
         }
     }
 }
