@@ -1,3 +1,49 @@
+In the project was deleted liquibase support.
+
+Create a Datasource with MySQL:
+a) create database MySqlDS;
+b) CREATE TABLE book (id INT NOT NULL AUTO_INCREMENT, title VARCHAR(200),published DATETIME,PRIMARY KEY (id) );
+c) CREATE TABLE accounts (id INT NOT NULL AUTO_INCREMENT, login VARCHAR(200), password VARCHAR(200), role VARCHAR(20), PRIMARY KEY(id));
+d) INSERT INTO accounts (id, login, password, role) VALUES (1, 'manager', 'manager', 'MANAGER');
+
+Configure a Datasource with JBoss 7:
+a) A Datasource can be configured either from the Command Line Interface or from the server main configuration file (standalone.xml/domain.xml).
+ We are configuring a MySQL Datasource by adding a new com.mysql module which is registered in the server main configuration file (<JBossDIR>/standalone/configuration/standalone.xm):
+ <datasource jndi-name="java:jboss/datasources/MySqlDS" pool-name="MySqlDS" enabled="true">
+                        <connection-url>jdbc:mysql://localhost:3306/MySqlDS</connection-url>
+                        <driver>mysql</driver>
+                        <transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation>
+                        <pool>
+                            <min-pool-size>10</min-pool-size>
+                            <max-pool-size>100</max-pool-size>
+                            <prefill>true</prefill>
+                        </pool>
+                        <security>
+                            <user-name>root</user-name>
+                            <password>root</password>
+                        </security>
+                        <statement>
+                            <prepared-statement-cache-size>32</prepared-statement-cache-size>
+                            <share-prepared-statements>true</share-prepared-statements>
+                        </statement>
+    </datasource>
+    <driver name="mysql" module="com.mysql">
+          <xa-datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</xa-datasource-class>
+    </driver>
+b) Now we need to register the com.mysql module under the modules/com/mysql/main folder. There you need to add two files: the module.xml definition and the JDBC jar library.
+   The module.xml contains basically the module name, the resources used and its dependencies:
+   <module xmlns="urn:jboss:module:1.0" name="com.mysql">
+      <resources>
+        <resource-root path="mysql-connector-java-5.1.17-bin.jar"/>
+
+      </resources>
+
+      <dependencies>
+         <module name="javax.api"/>
+         <module name="javax.transaction.api"/>
+       </dependencies>
+   </module>
+
 1) After cloning the project, go to the project root dir and run "mvn clean package" command.
 2) Add following code to <JBossDIR>/standalone/configuration/standalone.xml:
 <security-domain name="securityexampledomain" cache-type="default">
@@ -9,9 +55,5 @@
         </login-module>
     </authentication>
 </security-domain>
-3) Change lines in <JBossDIR>/standalone/configuration/standalone.xml:
-        <subsystem xmlns="urn:jboss:domain:jpa:1.0">
-            <jpa default-datasource="java:jboss/datasources/ExampleDS"/>
-        </subsystem>
-4) Restart JBoss AS.
-6) Enter the URL in browser--> localhost:8080/library/input
+3) Restart JBoss AS.
+4) Enter the URL in browser--> localhost:8080/library/input. (Login:manager, Password:manager)

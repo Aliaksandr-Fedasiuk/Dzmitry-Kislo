@@ -34,7 +34,6 @@ public class BookManagerBean implements BookManager {
     @RolesAllowed("bean")
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void create(Book book) {
-        book.setId(UUID.randomUUID().toString().toUpperCase());
         book.setPublished(new Date());
         em.persist(book);
     }

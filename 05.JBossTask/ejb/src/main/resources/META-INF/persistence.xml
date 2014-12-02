@@ -4,10 +4,10 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence">
     <persistence-unit name="unit" transaction-type="JTA">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
+        <jta-data-source>java:jboss/datasources/MySqlDS</jta-data-source>
+        <class>com.epam.cdp.entity.Book</class>
         <properties>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"></property>
-            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
         </properties>
     </persistence-unit>
 </persistence>

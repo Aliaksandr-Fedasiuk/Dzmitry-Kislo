@@ -17,18 +17,19 @@ public class Book implements Serializable {
     }
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     private String title;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date published;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(final String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
