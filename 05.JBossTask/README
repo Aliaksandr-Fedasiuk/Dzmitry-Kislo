@@ -9,9 +9,9 @@
         </login-module>
     </authentication>
 </security-domain>
-3) Comment lines in <JBossDIR>/standalone/configuration/standalone.xml:
+3) Change lines in <JBossDIR>/standalone/configuration/standalone.xml:
         <subsystem xmlns="urn:jboss:domain:jpa:1.0">
-            <jpa default-datasource=""/>
+            <jpa default-datasource="java:jboss/datasources/ExampleDS"/>
         </subsystem>
 4) Restart JBoss AS.
 6) Enter the URL in browser--> localhost:8080/library/input
