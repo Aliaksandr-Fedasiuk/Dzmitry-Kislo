@@ -17,7 +17,6 @@ import java.util.UUID;
  * Created by dima on 30.11.14.
  */
 @Stateless
-@DeclareRoles("bean")
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class BookManagerBean implements BookManager {
 
@@ -31,7 +30,6 @@ public class BookManagerBean implements BookManager {
     }
 
     @Override
-    @RolesAllowed("bean")
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void create(Book book) {
         book.setPublished(new Date());
