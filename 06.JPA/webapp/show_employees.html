@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script type="text/javascript"
+            src="/scripts/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" language="javascript">
+        function renderList(data) {
+            // JAX-RS serializes an empty list as null, and a 'collection of one' as an object (not an 'array of one')
+            var list = data == null ? [] : (data instanceof Array ? data : [data]);
+
+            $('#employeeList li').remove();
+            $.each(list, function(index, employee) {
+                $('#employeeList').append('<li><a href="/rest/employees/'+employee.id+'" data-identity="' + employee.id + '">'+employee.name+'</a></li>');
+            });
+        }
+        $(document).ready(function() {
+//            $("#driver").click(function(event){
+                $.ajax({
+                    type: 'GET',
+                    url: '/rest/employees',
+                    dataType: "json", // data type of response
+                    success: renderList
+                });
+//            });
+            $("#back").click(function(){
+                parent.history.back();
+                return false;
+            });
+        });
+
+    </script>
+</head>
+<body>
+<p>Click on the button to load list of employees:</p>
+<ul id="employeeList"></ul>
+<!--<input type="button" id="driver" value="Load Data" />-->
+<input type="button" id="back" value="Back" />
+</body>
+</html>

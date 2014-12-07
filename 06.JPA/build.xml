@@ -1,0 +1,70 @@
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="web_kd_ant" default="fetch-jars">
+
+    <property name="src.dir"      value="src"/>
+    <property name="build.dir"    value="build"/>
+    <property name="classes.dir"  value="${build.dir}/classes"/>
+    <property name="doc.dir"      value="${build.dir}/doc"/>
+    <property name="jar.dir"      value="${build.dir}/jar"/>
+    <property name="package.name" value="com.kd"/>
+    <property name="main-class"   value="com.kd.pack.TestClass"/>
+    <property name="lib.dir"      value="lib"/>
+    <property name="ivy.version"  value="2.2.0"/>
+
+    <target name="fetch-jars" depends="install-ivy" description="--> retrieve dependencies with ivy">
+        <ivy:retrieve pattern="lib/[artifact]-[revision].[ext]" symlink="true"/>
+    </target>
+
+    <target name="install-ivy">
+        <mkdir dir="${lib.dir}"/>
+        <get src="http://repo1.maven.org/maven2/org/apache/ivy/ivy/${ivy.version}/ivy-${ivy.version}.jar" dest="lib/ivy.jar" usetimestamp="true"/>
+        <path id="ivy.lib.path">
+            <fileset dir="lib" includes="*.jar"/>
+        </path>
+        <taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="ivy.lib.path"/>
+    </target>
+
+    <path id="classpath">
+        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+    </path>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="init" depends="clean">
+        <mkdir dir="${classes.dir}"/>
+        <mkdir dir="${doc.dir}"/>
+        <mkdir dir="${jar.dir}"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac srcdir="${src.dir}"
+               destdir="${classes.dir}"
+                classpathref="classpath"/>
+    </target>
+
+    <target name="doc" depends="init">
+        <javadoc destdir="${doc.dir}"
+                 sourcepath="${src.dir}"
+                 packagenames="${package.name}.*"/>
+    </target>
+
+    <!--<target name="package" depends="compile,doc">-->
+        <!--<jar destfile="${jar.dir}/${ant.project.name}.jar"-->
+             <!--basedir="${classes.dir}">-->
+            <!--<zipgroupfileset dir="${lib.dir}" includes="**/*.jar"/>-->
+            <!--<manifest>-->
+                <!--&lt;!&ndash;<attribute name="Main-Class" value="${main-class}"/>&ndash;&gt;-->
+            <!--</manifest>-->
+        <!--</jar>-->
+    <!--</target>-->
+
+    <!--<target name="run" depends="package">-->
+        <!--<java fork="true" jar="${jar.dir}/${ant.project.name}.jar">-->
+            <!--&lt;!&ndash;<classpath>&ndash;&gt;-->
+                <!--&lt;!&ndash;<path refid="classpath"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;</classpath>&ndash;&gt;-->
+        <!--</java>-->
+    <!--</target>-->
+
+</project>

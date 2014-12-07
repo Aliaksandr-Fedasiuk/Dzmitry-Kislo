@@ -1,0 +1,81 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script type="text/javascript"
+            src="/scripts/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" language="javascript">
+        function renderList(data) {
+            // JAX-RS serializes an empty list as null, and a 'collection of one' as an object (not an 'array of one')
+            var list = data == null ? [] : (data instanceof Array ? data : [data]);
+
+            $.each(list, function(index, project) {
+                $('#project_list').append($('<option/>', {
+                            value: project.id,
+                            text: project.name
+                        })
+                );
+            });
+        }
+        $(document).ready(function() {
+
+            $.ajax({
+                type: 'GET',
+                url: '/rest/projects',
+                dataType: "json", // data type of response
+                success: renderList
+            });
+
+
+        });
+
+    </script>
+</head>
+<body>
+
+<div>
+    <form id="editForm" action="/rest/employees" method="POST">
+        <h3>New employee:</h3>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td>
+                    <input type="text" name="name">
+                </td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td>
+                    <input type="text" name="city">
+                </td>
+            </tr>
+            <tr>
+                <td>Age:</td>
+                <td>
+                    <input type="text" name="age">
+                </td>
+            </tr>
+            <tr>
+                <td>Assign Project:</td>
+                <td>
+                    <select id="project_list" name="project_list"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td>
+                    <textarea rows="10" cols="45" name="description"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="buttons">
+                    <input type="submit" value="Submit">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,16 @@
+This is a skeleton project for a Java webapp.
+
+It includes:
+- Ant & Ivy for dependency management
+- Jersey for handling of http requests in a RESTful way
+- Spring for dependency injection in the code
+- H2 database (Windows users may need to edit jetty-web.xml)
+- Liquibase for DB migration
+- Hibernate for working with the DB
+- JUnit & Mockito for unit testing
+
+After cloning, do:
+1) run command in a terminal: ant
+2) add config/log4j.xml to classpath (set /config as resource-folder in IDE)
+3) set /test as test-folder in IDE
+4) run src/Launcher.java to start. Everything is preconfigured.
