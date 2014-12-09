@@ -19,7 +19,6 @@ import static java.util.Arrays.asList;
 public class EmployeeRepository {
     @Autowired HibernateOperations hibernate;
     @Autowired UnitRepository unitRepository;
-    @Autowired PersonalInfoRepository personalInfoRepository;
 
     public List<Employee> getAllEmployees() {
         return hibernate.loadAll(Employee.class);
@@ -30,8 +29,8 @@ public class EmployeeRepository {
             Unit unit = unitRepository.findUnitById(1L);
             employee.setUnit(unit);
         }
+        employee.setPersonalInfo(personalInfo);
         hibernate.saveOrUpdate(employee);
-        personalInfoRepository.savePersonalInfo(personalInfo, employee.getId());
         return employee.getId();
     }
 

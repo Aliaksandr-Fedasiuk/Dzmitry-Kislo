@@ -30,6 +30,9 @@ public class Employee {
     @JoinColumn(name="unit_id")
     Unit unit;
 
+    @OneToOne(cascade = {CascadeType.ALL}) @JoinColumn(name = "info_id")
+    PersonalInfo personalInfo;
+
     public Employee() {
     }
 
@@ -66,6 +69,14 @@ public class Employee {
 
     public Set<Project> getProjects() {
         return projects;
+    }
+
+    public void setPersonalInfo(PersonalInfo personalInfo) {
+        this.personalInfo = personalInfo;
+    }
+
+    public PersonalInfo getPersonalInfo() {
+        return personalInfo;
     }
 
     public void addProject(Project project) {

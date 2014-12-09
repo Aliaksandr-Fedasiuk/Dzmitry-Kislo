@@ -15,8 +15,8 @@ public class PersonalInfo {
 
     int age;
     String description;
-    @OneToOne @JoinColumn(name = "employee_id")
-    Employee employee;
+//    @OneToOne(cascade = {CascadeType.ALL}) @JoinColumn(name = "employee_id")
+//    Employee employee;
 
     public PersonalInfo() {
     }
@@ -38,7 +38,7 @@ public class PersonalInfo {
         return description;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
+//    public void setEmployee(Employee employee) {
+//        this.employee = employee;
+//    }
 }

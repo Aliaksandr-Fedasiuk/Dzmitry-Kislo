@@ -26,5 +26,3 @@ target/
 */*.class
 */log/
 */target/
-*/lib/
-*/logs/
