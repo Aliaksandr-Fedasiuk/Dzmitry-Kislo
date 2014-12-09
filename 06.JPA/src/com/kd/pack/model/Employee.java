@@ -40,7 +40,6 @@ public class Employee {
         this.name = name;
         this.address = address;
         this.status = EmployeeStatus.EMPLOYEE;
-
     }
 
     public Long getId() {
