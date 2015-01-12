@@ -11,13 +11,13 @@
     <title>
         <tiles:getAsString name="title" />
     </title>
-    <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+    <%--<link rel="stylesheet" href="/css/style.css" type="text/css"/>--%>
 </head>
 <body>
 
 <tiles:insertAttribute name="header" />
-<tiles:insertAttribute name="navigation" />
-<tiles:insertAttribute name="content" />
+<tiles:insertAttribute name="menu" />
+<tiles:insertAttribute name="body" />
 <tiles:insertAttribute name="footer" />
 
 </body>

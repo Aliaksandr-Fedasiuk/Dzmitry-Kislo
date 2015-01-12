@@ -1,44 +1,39 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!-- Tell the JSP Page that please do not ignore Expression Language -->
-<%@ page isELIgnored="false"%>
-<!DOCTYPE html>
-<html lang="en">
-<body>
-
-<style type="text/css">
-  TABLE {
-    width: 300px;
-    border-collapse: collapse;
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<style>
+  table.reference tr:nth-child(even) {
+    background-color: #ffffff;
+    border: 1px solid #000;
   }
-  TD, TH {
-    padding: 3px;
-    border: 1px solid black;
+  tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+  }
+  table.reference tr:nth-child(odd) {
+    background-color: #f1f1f1;
+  }
+  tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
   }
 </style>
-
-<form:form method="get" modelAttribute="users">
-  <h1><spring:message code="user.list" /></h1>
-  <ul>
-    <table>
-      <th>
-      <td>id</td>
-      <td>login</td>
-      <td>name</td>
-      </th>
-      <c:forEach items="${users}" var="user">
-        <tr>
-          <td/>
-          <td>${user.userId}</td>
-          <td>${user.login}</td>
-          <td>${user.name}</td>
-        </tr>
-      </c:forEach>
-    </table>
-  </ul>
-</form:form>
-
-<a href='<spring:url value="/inputForm" />'> <spring:message code="user.create" /></a>
-</body>
-</html>
+<div style="margin: 10px;">
+  <h4>List of Users</h4>
+  <table style="width: 600px" class="reference">
+    <tbody>
+    <tr>
+      <th>Id</th>
+      <th>Login</th>
+      <th>Name</th>
+    </tr>
+    <c:forEach var="user" items="${users}">
+      <tr>
+        <td><c:out value="${user.userId}" /></td>
+        <td><c:out value="${user.login}" /></td>
+        <td><c:out value="${user.name}" /></td>
+      </tr>
+    </c:forEach>
+    </tbody>
+  </table>
+</div>
