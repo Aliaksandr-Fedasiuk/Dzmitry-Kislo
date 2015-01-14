@@ -5,13 +5,14 @@
 
 <tiles-definitions>
 
-    <definition name="index" extends="base-template">
-        <put-attribute name="body"	value="/WEB-INF/jsp/index.jsp" />
+    <definition name="addEmployee" extends="base-template">
+        <put-attribute name="title" value="Employee Data Form"/>
+        <put-attribute name="body"	value="/WEB-INF/jsp/addEmployee.jsp" />
     </definition>
 
-    <definition name="usersList" extends="base-template">
-        <put-attribute name="title" value="User List" />
-        <put-attribute name="body" value="/WEB-INF/jsp/usersList.jsp" />
+    <definition name="employeesList" extends="base-template">
+        <put-attribute name="title" value="Employees List" />
+        <put-attribute name="body" value="/WEB-INF/jsp/employeesList.jsp" />
     </definition>
 
 </tiles-definitions>
