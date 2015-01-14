@@ -1,26 +1,39 @@
 package com.epam.cdp.domain;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * Created by dima on 14.1.15.
  */
-public class Employee {
+@Entity
+@Table(name="EMPLOYEE")
+public class Employee implements Serializable {
 
+    private static final long serialVersionUID = -723583058586873129L;
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name = "empid")
     private Integer empId;
+
+    @Column(name="empname")
     private String empName;
+
+    @Column(name="empaddress")
     private String empAddress;
+
+    @Column(name="salary")
     private Long salary;
+
+    @Column(name="empAge")
     private Integer empAge;
-
-    public Employee() {
-    }
-
-    public Employee(Integer empId, String empName, String empAddress, Long salary, Integer empAge) {
-        this.empId = empId;
-        this.empName = empName;
-        this.empAddress = empAddress;
-        this.salary = salary;
-        this.empAge = empAge;
-    }
 
     public Integer getEmpId() {
         return empId;
