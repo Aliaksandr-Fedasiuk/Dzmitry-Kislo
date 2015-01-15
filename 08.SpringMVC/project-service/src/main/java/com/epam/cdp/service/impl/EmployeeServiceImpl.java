@@ -14,7 +14,7 @@ import java.util.List;
  * Created by dima on 14.1.15.
  */
 @Service("employeeService")
-@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+@Transactional
 public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
