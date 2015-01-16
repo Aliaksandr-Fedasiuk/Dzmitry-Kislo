@@ -1,3 +1,4 @@
 1. mvn clean install
 2. cd project-web and run
    mvn jetty:run
+3. localhost:8888/
