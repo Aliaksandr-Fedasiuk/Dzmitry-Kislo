@@ -1,0 +1,7 @@
+0. Instal JBoss-eap-6.*
+1. Create user in jboss with login(realm) and password(realm1realm!1). Or change following values in Subscriber and SendMessageServlet.
+2. mvn clean install.
+3. copy war in jboss.
+4. start jboss (./standalone.sh -c standalone-full.xml)
+5. start client
+6. go to http://localhost:8080/jms-server/InputMessageServlet.do.
